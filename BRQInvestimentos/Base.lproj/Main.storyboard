@@ -196,8 +196,8 @@
                                 <rect key="frame" x="24" y="735" width="151" height="43"/>
                                 <color key="backgroundColor" red="0.23529411764705882" green="0.55294117647058827" blue="0.73725490196078436" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="43" id="3ie-Xv-gsk"/>
-                                    <constraint firstAttribute="width" constant="151" id="bWp-KX-C1v"/>
+                                    <constraint firstAttribute="height" constant="43" id="cMA-2i-gTn"/>
+                                    <constraint firstAttribute="width" constant="151" id="vmX-aI-Y8d"/>
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
@@ -209,11 +209,13 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rse-1d-66q">
-                                <rect key="frame" x="200" y="735" width="169" height="43"/>
+                                <rect key="frame" x="218" y="735" width="151" height="43"/>
                                 <color key="backgroundColor" red="0.23529411764705882" green="0.55294117647058827" blue="0.73725490196078436" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="151" id="FtK-XN-8IC"/>
-                                    <constraint firstAttribute="height" constant="43" id="gmD-MC-wX7"/>
+                                    <constraint firstAttribute="height" constant="43" id="27n-UH-tki"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="151" id="9pk-qt-MXs"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="43" id="Vcq-X5-TZu"/>
+                                    <constraint firstAttribute="width" constant="151" id="tdj-mG-w8K"/>
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
@@ -228,12 +230,10 @@
                         <viewLayoutGuide key="safeArea" id="DR5-7x-h6H"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="DR5-7x-h6H" firstAttribute="bottom" secondItem="Rse-1d-66q" secondAttribute="bottom" constant="40" id="3po-3j-eLQ"/>
+                            <constraint firstItem="0B0-vd-30O" firstAttribute="leading" secondItem="DR5-7x-h6H" secondAttribute="leading" constant="24" id="2eD-wU-i9G"/>
+                            <constraint firstItem="DR5-7x-h6H" firstAttribute="trailing" secondItem="Rse-1d-66q" secondAttribute="trailing" constant="24" id="4gO-P1-TdL"/>
                             <constraint firstItem="cVs-q0-ctg" firstAttribute="top" secondItem="mZc-dG-Int" secondAttribute="bottom" constant="24" id="62J-mt-tcO"/>
                             <constraint firstItem="mZc-dG-Int" firstAttribute="top" secondItem="vni-NU-Nzx" secondAttribute="bottom" constant="24" id="66z-Rk-6qh"/>
-                            <constraint firstItem="Rse-1d-66q" firstAttribute="leading" secondItem="0B0-vd-30O" secondAttribute="trailing" constant="25" id="9of-Z5-siY"/>
-                            <constraint firstItem="0B0-vd-30O" firstAttribute="leading" secondItem="DR5-7x-h6H" secondAttribute="leading" constant="24" id="DjG-YS-1Aq"/>
-                            <constraint firstItem="DR5-7x-h6H" firstAttribute="trailing" secondItem="Rse-1d-66q" secondAttribute="trailing" constant="24" id="F2m-Xg-0xw"/>
                             <constraint firstItem="DR5-7x-h6H" firstAttribute="trailing" secondItem="vni-NU-Nzx" secondAttribute="trailing" constant="24" id="Gfm-Qe-S9a"/>
                             <constraint firstItem="mZc-dG-Int" firstAttribute="leading" secondItem="DR5-7x-h6H" secondAttribute="leading" constant="24" id="I8A-0G-PG4"/>
                             <constraint firstItem="cVs-q0-ctg" firstAttribute="leading" secondItem="DR5-7x-h6H" secondAttribute="leading" constant="24" id="IO0-Zc-xnc"/>
@@ -241,13 +241,13 @@
                             <constraint firstItem="DR5-7x-h6H" firstAttribute="trailing" secondItem="mZc-dG-Int" secondAttribute="trailing" constant="24" id="MyY-hA-OXB"/>
                             <constraint firstItem="d9z-Ra-HfA" firstAttribute="top" secondItem="uI8-ZL-yIf" secondAttribute="top" constant="24" id="QNN-cU-T19"/>
                             <constraint firstItem="vni-NU-Nzx" firstAttribute="top" secondItem="d9z-Ra-HfA" secondAttribute="bottom" constant="32" id="XkL-eP-QZk"/>
-                            <constraint firstItem="Rse-1d-66q" firstAttribute="leading" secondItem="0B0-vd-30O" secondAttribute="trailing" constant="25" id="Zoh-Qs-hkM"/>
                             <constraint firstItem="cVs-q0-ctg" firstAttribute="top" secondItem="mZc-dG-Int" secondAttribute="bottom" constant="24" id="d6k-Lo-O9B"/>
                             <constraint firstItem="DR5-7x-h6H" firstAttribute="trailing" secondItem="cVs-q0-ctg" secondAttribute="trailing" constant="24" id="eX7-d9-cwZ"/>
+                            <constraint firstItem="DR5-7x-h6H" firstAttribute="bottom" secondItem="Rse-1d-66q" secondAttribute="bottom" constant="40" id="eeC-mr-BMK"/>
                             <constraint firstItem="DR5-7x-h6H" firstAttribute="trailing" secondItem="d9z-Ra-HfA" secondAttribute="trailing" constant="24" id="gDF-jF-ZXR"/>
                             <constraint firstItem="d9z-Ra-HfA" firstAttribute="leading" secondItem="DR5-7x-h6H" secondAttribute="leading" constant="24" id="gkd-NO-IZp"/>
                             <constraint firstItem="mZc-dG-Int" firstAttribute="top" secondItem="vni-NU-Nzx" secondAttribute="bottom" constant="24" id="lxf-Yr-7MX"/>
-                            <constraint firstItem="DR5-7x-h6H" firstAttribute="bottom" secondItem="0B0-vd-30O" secondAttribute="bottom" constant="40" id="mDj-cI-awq"/>
+                            <constraint firstItem="DR5-7x-h6H" firstAttribute="bottom" secondItem="0B0-vd-30O" secondAttribute="bottom" constant="40" id="vKu-xW-kCX"/>
                             <constraint firstItem="vni-NU-Nzx" firstAttribute="leading" secondItem="DR5-7x-h6H" secondAttribute="leading" constant="24" id="xE5-1X-9jg"/>
                         </constraints>
                     </view>
@@ -286,7 +286,9 @@
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="HOME"/>
+                                <buttonConfiguration key="configuration" style="plain" title="HOME">
+                                    <fontDescription key="titleFontDescription" name="ArialMT" family="Arial" pointSize="24"/>
+                                </buttonConfiguration>
                                 <connections>
                                     <action selector="botaoHomePressionado:" destination="e8b-fe-3fV" eventType="touchUpInside" id="4On-yt-i9N"/>
                                 </connections>
@@ -328,7 +330,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Rp8-Ch-WtT" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="v9u-Bw-dCw">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="v9u-Bw-dCw">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
