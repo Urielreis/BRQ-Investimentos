@@ -100,46 +100,38 @@ class CambioViewController: UIViewController {
         if botao.tag == 1 {
             // Botao de Comprar
             if (carteira.saldo < moedaPrecoCompra || carteira.saldo < precoTotal) {
-                desabilitadoBotaoComprar()
+                desabilitado(botaoComprar)
             } else {
-                habilitadoBotaoComprar()
+                habilitado(botaoComprar)
             }
         } else {
             // Botao de Vender
             if (quantidadeUsuario > dinheiroDisponivel || moeda.sell == nil || dinheiroDisponivel == 0) {
-                desabilitadoBotaoVender()
+                desabilitado(botaoVender)
+
             } else {
-                habilitadoBotaoVender()
+                habilitado(botaoVender)
             }
             
             // isEmpty (Verifica se esta vazio ou verdadeiro e falso)
             if (DinheiroDisponivelString.isEmpty || quantidadeUsuario <= 0) {
-                desabilitadoBotaoVender()
-                desabilitadoBotaoComprar()
+
+                desabilitado(botaoComprar)
+                desabilitado(botaoVender)
             }
         }
     }
     
-    func desabilitadoBotaoComprar() {
+    func desabilitado(_ botao: UIButton) {
         // isEnabled (Indica se esta habilitado)
-            botaoComprar.isEnabled = false
+            botao.isEnabled = false
         // alpha (Metodo de transparencia ou opaco)
-            botaoComprar.alpha = 0.45
+            botao.alpha = 0.45
         }
 
-        func habilitadoBotaoComprar(){
-            botaoComprar.isEnabled = true
-            botaoComprar.alpha = 1
-        }
-
-        func desabilitadoBotaoVender() {
-            botaoVender.isEnabled = false
-            botaoVender.alpha = 0.45
-        }
-
-        func habilitadoBotaoVender(){
-            botaoVender.isEnabled = true
-            botaoVender.alpha = 1
+        func habilitado(_ botao: UIButton){
+            botao.isEnabled = true
+            botao.alpha = 1
         }
     
     // dismissKeyboard (Tirar o teclado)

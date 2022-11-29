@@ -9,7 +9,7 @@ class HomeViewController: UITableViewController {
     // Constante que esta chamando classe Carteira
     let carteira = Carteira()
     // Constante que esta sendo usada para puxar classe API e link URL
-    let URLApi = "https://api.hgbrasil.com/finance?array_limit=1&fields=only_results,currencies&key=57edaf28"
+    let URLApi = "https://api.hgbrasil.com/finance?array_limit=1&fields=only_results,currencies&key=d79425ba"
     
     // Metodo de carregar
     override func viewDidLoad() {
