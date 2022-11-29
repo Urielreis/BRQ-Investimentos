@@ -71,7 +71,7 @@ class CambioViewController: UIViewController {
         vendaLabel.text = ("Venda: " + moeda.vender)
         
         // Saldo disponível
-        saldoDisponivel.text = ("Saldo disponível: R$\(carteira.saldoDisponivel)")
+        saldoDisponivel.text = ("Saldo disponível: \(carteira.saldoDisponivel)")
         
         // Quantidade em caixa
         moedaEmCaixa.text = ("\(quantidadeDeMoedas) \(siglaMoeda) em caixa")
@@ -99,7 +99,7 @@ class CambioViewController: UIViewController {
         // tag (Separador de tela por numero)
         if botao.tag == 1 {
             // Botao de Comprar
-            if (carteira.saldoDisponivel < moedaPrecoCompra || carteira.saldoDisponivel < precoTotal) {
+            if (carteira.saldo < moedaPrecoCompra || carteira.saldo < precoTotal) {
                 desabilitadoBotaoComprar()
             } else {
                 habilitadoBotaoComprar()

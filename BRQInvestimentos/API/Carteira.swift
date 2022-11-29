@@ -2,8 +2,19 @@ import Foundation
 import UIKit
 
 class Carteira {
-    
-    var saldoDisponivel: Double 
+    var saldo: Double
+    var saldoDisponivel: String {
+        let formatador = NumberFormatter()
+        formatador.numberStyle = .currency
+        formatador.currencyCode = "BRL"
+        
+        if let resultado = formatador.string(from: NSNumber(value: saldo)) {
+            
+            return resultado
+        }
+        return "R$0.00"
+        
+    }
     let siglaAPI = ["USD", "EUR", "GBP", "ARS", "AUD", "BTC", "CAD", "CNY", "JPY"]
     var carteiraUsuario: [String: Int]
     var precoTotalCompra: Double
@@ -40,7 +51,7 @@ class Carteira {
     
     init() {
         
-        self.saldoDisponivel = 1000.0
+        self.saldo = 1000.0
         var carteira = [String: Int]()
         
         // Todas as siglas comecam em 0
@@ -60,7 +71,7 @@ class Carteira {
             
             let valorTotalCompra = precoCompraMoeda * Double(quantidade)
             carteiraUsuario[Sigla] = saldoMoeda + quantidade
-            saldoDisponivel -= valorTotalCompra
+            saldo -= valorTotalCompra
             
             precoTotalCompra = valorTotalCompra
         }else {
@@ -68,7 +79,7 @@ class Carteira {
             
             let valorTotalVenda = precoVendaMoeda * Double(quantidade)
             carteiraUsuario[Sigla] = saldoMoeda - quantidade
-            saldoDisponivel += valorTotalVenda
+            saldo += valorTotalVenda
             
             precoTotalVenda = valorTotalVenda
         }
