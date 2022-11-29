@@ -8,47 +8,38 @@ class Carteira {
     var carteiraUsuario: [String: Int]
     var precoTotalCompra: Double
     var precoTotalCompraFormatado: String {
-
-          let formatador = NumberFormatter()
-
-          formatador.numberStyle = .currency
-
-          formatador.currencyCode = "BRL"
-
-          if let resultado = formatador.string(from: NSNumber(value: precoTotalCompra)) {
-
-              return resultado
-
-          }
-
-          return "R$0.00"
-
-      }
-
-      
-
-      var precoTotalVenda: Double
-
-      var precoTotalVendaFormatado: String {
-
-          let formatador = NumberFormatter()
-
-          formatador.numberStyle = .currency
-
-          formatador.currencyCode = "BRL"
-
-          if let resultado = formatador.string(from: NSNumber(value: precoTotalVenda)) {
-
-              return resultado
-
-          }
-
-          return "R$0.00"
-
-      }
+        
+        let formatador = NumberFormatter()
+        formatador.numberStyle = .currency
+        formatador.currencyCode = "BRL"
+        
+        if let resultado = formatador.string(from: NSNumber(value: precoTotalCompra)) {
+            
+            return resultado
+        }
+        return "R$0.00"
+    }
+    var precoTotalVenda: Double
+    var precoTotalVendaFormatado: String {
+        
+        let formatador = NumberFormatter()
+        
+        formatador.numberStyle = .currency
+        
+        formatador.currencyCode = "BRL"
+        
+        if let resultado = formatador.string(from: NSNumber(value: precoTotalVenda)) {
+            
+            return resultado
+            
+        }
+        
+        return "R$0.00"
+        
+    }
     
     init() {
-
+        
         self.saldoDisponivel = 1000.0
         var carteira = [String: Int]()
         
@@ -61,42 +52,25 @@ class Carteira {
         self.precoTotalCompra = 0.0
     }
     
-    // Funcao de vender
-    func vender(quantidade: Int, _ siglaMoeda: String, _ moeda: Currency) {
-        guard let valorMoeda = carteiraUsuario[siglaMoeda],
-              let precoVendaMoeda = moeda.sell else {
-            return
+    func compraEVenda(quantidade: Int, Sigla: String, valor: Double, Tag: Int, moeda: Currency) {
+        guard let saldoMoeda = carteiraUsuario[Sigla] else { return }
+        
+        if Tag == 1 {
+            guard let precoCompraMoeda = moeda.buy else { return }
+            
+            let valorTotalCompra = precoCompraMoeda * Double(quantidade)
+            carteiraUsuario[Sigla] = saldoMoeda + quantidade
+            saldoDisponivel -= valorTotalCompra
+            
+            precoTotalCompra = valorTotalCompra
+        }else {
+            guard let precoVendaMoeda = moeda.sell else { return }
+            
+            let valorTotalVenda = precoVendaMoeda * Double(quantidade)
+            carteiraUsuario[Sigla] = saldoMoeda - quantidade
+            saldoDisponivel += valorTotalVenda
+            
+            precoTotalVenda = valorTotalVenda
         }
-        
-        let precoVenda = precoVendaMoeda * Double(quantidade)
-        
-        if valorMoeda >= quantidade {
-            saldoDisponivel += precoVenda
-            carteiraUsuario[siglaMoeda] = valorMoeda - quantidade
-        }
-        
-        precoTotalVenda = precoVenda
-        
-       
-    }
-    
-    // Funcao de Comprar
-    func comprar(quantidade: Int, _ siglaMoeda: String, _ moeda: Currency) {
-        guard let currencyAmount = carteiraUsuario[siglaMoeda],
-              let precoCompraMoeda = moeda.buy else {
-            return
-        }
-        
-        let precoCompra = precoCompraMoeda * Double(quantidade)
-        
-        if saldoDisponivel - precoCompra > 0 {
-            carteiraUsuario[siglaMoeda] = currencyAmount + quantidade
-            saldoDisponivel -= precoCompra
-        }
-        
-        precoTotalCompra = precoCompra
-        
-      
     }
 }
-

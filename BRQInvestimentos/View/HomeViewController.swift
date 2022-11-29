@@ -1,37 +1,42 @@
 import Foundation
 import UIKit
 
-// teste git
 
-class ViewController: UITableViewController {
+class HomeViewController: UITableViewController {
     
+    // Variavel que esta chamando a Currency da api
     var moedas = [Currency]()
+    // Constante que esta chamando classe Carteira
     let carteira = Carteira()
+    // Constante que esta sendo usada para puxar classe API e link URL
+    let URLApi = "https://api.hgbrasil.com/finance?array_limit=1&fields=only_results,currencies&key=57edaf28"
     
+    // Metodo de carregar
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Puxando API na tela
         requisicaoAPI()
-        
-        
     }
     
-    
+    // numberOfSections (Solicita dados que retorna numero de secoes)
     override func numberOfSections(in tableView: UITableView) -> Int {
         return moedas.count
     }
     
+    // numberOfRowsInSection (Retorna numero de linhas)
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     
+    // heightForHeaderInSection (Altura que sera usado no cabecalho da secao)
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         let espacoEntreCelulas: CGFloat = 24
         
         return espacoEntreCelulas
     }
     
+    // viewForHeaderInSection (Cabecalho da secao especificada da tabela)
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let cabecalho = UIView()
         cabecalho.backgroundColor = UIColor.black
@@ -39,7 +44,9 @@ class ViewController: UITableViewController {
         return cabecalho
     }
     
+    // cellForRowAt (Retorna uma celula para inserir na tabela)
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // dequeueReusableCell (Retorna um objeto da celula de tabela apos indentificar)
         guard let celulaView = tableView.dequeueReusableCell(withIdentifier: "celulaReuso", for: indexPath) as? BotaoDaTableView else { fatalError() }
         
         adicionandoLabels(celulaView, for: indexPath)
@@ -48,19 +55,23 @@ class ViewController: UITableViewController {
         return celulaView
     }
     
+    // didSelectRowAt (Responde quando clica em uma linha)
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let storyboard = storyboard,
               let navigationController = navigationController else {return}
         
+        // instantiateViewController (Cria o controlador de exibicao com o identificador)
         if let cambioViewController = storyboard.instantiateViewController(withIdentifier: "CambioViewController") as? CambioViewController {
             cambioViewController.moedaSelecionada = moedas[indexPath.section]
             cambioViewController.carteira = carteira
             
             
+            // cellForRow (Retorna celula da tabela)
             guard let celula = tableView.cellForRow(at: indexPath) as? BotaoDaTableView else {return}
             guard let siglaMoeda = celula.siglaDaMoeda.text else {return}
             cambioViewController.siglaMoeda = siglaMoeda
             
+            // pushViewController (Parametro que faz sua visualizacao seja incorpocada na navegacao)
             navigationController.pushViewController(cambioViewController, animated: true)
         }
     }
@@ -94,48 +105,5 @@ class ViewController: UITableViewController {
         
         celula.porcentagemLabel.text = moeda.variationString
         celula.porcentagemLabel.corLabel(variacaoPorcentagem: moeda.variation)
-    }
-    
-    // API - Requisição
-    func requisicaoAPI() {
-        guard let url = URL(string: "https://api.hgbrasil.com/finance?array_limit=1&fields=only_results,currencies&key=a6cb5965") else { return }
-        let session = URLSession(configuration: .default)
-        
-        let task = session.dataTask(with: url) { (data, response, error) in
-            if error != nil {
-                guard let error = error else { return }
-                print(error)
-                return
-            }
-            if let safeData = data {
-                self.decoderJSON(safeData)
-            }
-        }
-        task.resume()
-    }
-    
-   // JSON Decoder
-    func decoderJSON(_ financeData: Data) {
-        let decoder = JSONDecoder()
-        do {
-            let decodedData = try decoder.decode(Results.self, from: financeData)
-            moedas = [
-                decodedData.currencies.USD,
-                decodedData.currencies.EUR,
-                decodedData.currencies.ARS,
-                decodedData.currencies.AUD,
-                decodedData.currencies.BTC,
-                decodedData.currencies.CAD,
-                decodedData.currencies.CNY,
-                decodedData.currencies.GBP,
-                decodedData.currencies.JPY
-            ]
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        } catch {
-            print(error)
-            return
-        }
     }
 }

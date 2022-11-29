@@ -31,6 +31,7 @@ class CambioViewController: UIViewController {
     var valorDeVenda = Double()
     var valorDeCompra = Double()
     
+    // Metodo de carregar
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -47,7 +48,6 @@ class CambioViewController: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
 
                 view.addGestureRecognizer(tap)
-    
     }
     
     func alteracaoLabel() {
@@ -76,7 +76,6 @@ class CambioViewController: UIViewController {
         // Quantidade em caixa
         moedaEmCaixa.text = ("\(quantidadeDeMoedas) \(siglaMoeda) em caixa")
         
-        
         checarBotoes(botaoComprar, carteira, moeda, iso: siglaMoeda)
         checarBotoes(botaoVender, carteira, moeda, iso: siglaMoeda)
         
@@ -97,6 +96,7 @@ class CambioViewController: UIViewController {
             precoTotal = moedaPrecoCompra * Double(QuantidadeInseridaInt)
         }
         
+        // tag (Separador de tela por numero)
         if botao.tag == 1 {
             // Botao de Comprar
             if (carteira.saldoDisponivel < moedaPrecoCompra || carteira.saldoDisponivel < precoTotal) {
@@ -112,16 +112,18 @@ class CambioViewController: UIViewController {
                 habilitadoBotaoVender()
             }
             
+            // isEmpty (Verifica se esta vazio ou verdadeiro e falso)
             if (DinheiroDisponivelString.isEmpty || quantidadeUsuario <= 0) {
                 desabilitadoBotaoVender()
                 desabilitadoBotaoComprar()
             }
         }
-        
     }
     
     func desabilitadoBotaoComprar() {
+        // isEnabled (Indica se esta habilitado)
             botaoComprar.isEnabled = false
+        // alpha (Metodo de transparencia ou opaco)
             botaoComprar.alpha = 0.45
         }
 
@@ -134,42 +136,48 @@ class CambioViewController: UIViewController {
             botaoVender.isEnabled = false
             botaoVender.alpha = 0.45
         }
-    
+
         func habilitadoBotaoVender(){
             botaoVender.isEnabled = true
             botaoVender.alpha = 1
         }
     
+    // dismissKeyboard (Tirar o teclado)
     @objc func dismissKeyboard() {
+        // endEditing (Faz com que a exibicao renuncie nao apareca)
             view.endEditing(true)
         }
 
+        // viewDidDisappear (Chama toda vez que a tela desaparecer)
         override func viewDidDisappear(_ animated: Bool) {
 
             alteracaoLabel()
-
         }
 
    // Função Botão Pressionado
-    @IBAction func botaoComprarEVender(_ sender: Any) {
+    @IBAction func botaoComprarEVender(_ sender: UIButton) {
         guard let carteira = carteira,
               let moedaSelecionada = moedaSelecionada,
               let CampoQuantidadeString = quantidadeText.text,
               let campoQuantidade = Int(CampoQuantidadeString),
               let storyboard = storyboard,
+              // instantiateViewController (Cria o controlador de exibicao com o identificador)
               let MensagemViewController = storyboard.instantiateViewController(withIdentifier: "ComprarEVenderController") as? ComprarEVenderController,
               let navigationController = navigationController else {return}
         
         var acaoDoBotao: String
         var precoTransacao: String
         
+        // AnyObject (Retorna um dos objetos ou nil)
         if (sender as AnyObject).tag == 0 {
+            guard let valorVenda = moedaSelecionada.sell else {return}
             acaoDoBotao = "Vender" // Botão vender
-            carteira.vender(quantidade: campoQuantidade, siglaMoeda, moedaSelecionada)
+            carteira.compraEVenda(quantidade: campoQuantidade, Sigla: siglaMoeda, valor: valorVenda, Tag: sender.tag, moeda: moedaSelecionada)
             precoTransacao = carteira.precoTotalVendaFormatado
         } else {
+            guard let valorCompra = moedaSelecionada.buy else {return}
             acaoDoBotao = "Comprar" // Botão comprar
-            carteira.comprar(quantidade: campoQuantidade, siglaMoeda, moedaSelecionada)
+            carteira.compraEVenda(quantidade: campoQuantidade, Sigla: siglaMoeda, valor: valorCompra, Tag: sender.tag, moeda: moedaSelecionada)
             precoTransacao = carteira.precoTotalCompraFormatado
         }
         
@@ -181,6 +189,7 @@ class CambioViewController: UIViewController {
             MensagemViewController.precoTransacaoMensagem = precoTransacao
         
         MensagemViewController.title = acaoDoBotao.capitalized
+        // pushViewController (Parametro que faz sua visualizacao seja incorpocada na navegacao)
         navigationController.pushViewController(MensagemViewController, animated: true)
     }
     
@@ -191,6 +200,7 @@ class CambioViewController: UIViewController {
     }
     // Mostrar na Tela
     func customizacaoView() {
+        // Largura da borda
         cambioView.layer.borderWidth = 1
         cambioView.layer.cornerRadius = 15
         cambioView.layer.borderColor = UIColor.white.cgColor
@@ -217,5 +227,4 @@ extension CambioViewController: UITextFieldDelegate {
         checarBotoes(botaoComprar, carteira, moeda, iso: siglaMoeda)
         checarBotoes(botaoVender, carteira, moeda, iso: siglaMoeda)
     }
-
 }
