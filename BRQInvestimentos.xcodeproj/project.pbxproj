@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE3D8BA929310B300038D3A4 /* RequisicaoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3D8BA829310B300038D3A4 /* RequisicaoAPI.swift */; };
 		CE48C706291EB4BE00D64E85 /* BordaDaCelula.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE48C705291EB4BE00D64E85 /* BordaDaCelula.swift */; };
 		CE5D966928FF2F1000B33196 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5D966828FF2F1000B33196 /* AppDelegate.swift */; };
 		CE5D966B28FF2F1000B33196 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5D966A28FF2F1000B33196 /* SceneDelegate.swift */; };
-		CE5D966D28FF2F1000B33196 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5D966C28FF2F1000B33196 /* ViewController.swift */; };
+		CE5D966D28FF2F1000B33196 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5D966C28FF2F1000B33196 /* HomeViewController.swift */; };
 		CE5D967028FF2F1000B33196 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE5D966E28FF2F1000B33196 /* Main.storyboard */; };
 		CE5D967228FF2F1100B33196 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE5D967128FF2F1100B33196 /* Assets.xcassets */; };
 		CE5D967528FF2F1100B33196 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE5D967328FF2F1100B33196 /* LaunchScreen.storyboard */; };
@@ -22,11 +23,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE3D8BA829310B300038D3A4 /* RequisicaoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequisicaoAPI.swift; sourceTree = "<group>"; };
 		CE48C705291EB4BE00D64E85 /* BordaDaCelula.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BordaDaCelula.swift; sourceTree = "<group>"; };
 		CE5D966528FF2F1000B33196 /* BRQInvestimentos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BRQInvestimentos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE5D966828FF2F1000B33196 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE5D966A28FF2F1000B33196 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CE5D966C28FF2F1000B33196 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CE5D966C28FF2F1000B33196 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		CE5D966F28FF2F1000B33196 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CE5D967128FF2F1100B33196 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE5D967428FF2F1100B33196 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 			children = (
 				CE82C8F02901C14000006CB2 /* Carteira.swift */,
 				CE9DB90529104B0200E9F155 /* RetornoAPI.swift */,
+				CE3D8BA829310B300038D3A4 /* RequisicaoAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -102,7 +105,7 @@
 		CEB4FCDB2901D8CF003C6AA7 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				CE5D966C28FF2F1000B33196 /* ViewController.swift */,
+				CE5D966C28FF2F1000B33196 /* HomeViewController.swift */,
 				CE9DB903290C42F600E9F155 /* CambioViewController.swift */,
 				CEC491B0291169EA0071C471 /* ComprarEVenderController.swift */,
 			);
@@ -190,8 +193,9 @@
 			files = (
 				CE82C8F12901C14000006CB2 /* Carteira.swift in Sources */,
 				CEC491B1291169EB0071C471 /* ComprarEVenderController.swift in Sources */,
-				CE5D966D28FF2F1000B33196 /* ViewController.swift in Sources */,
+				CE5D966D28FF2F1000B33196 /* HomeViewController.swift in Sources */,
 				CE9DB904290C42F600E9F155 /* CambioViewController.swift in Sources */,
+				CE3D8BA929310B300038D3A4 /* RequisicaoAPI.swift in Sources */,
 				CE5D966928FF2F1000B33196 /* AppDelegate.swift in Sources */,
 				CE82C8EF2901C12D00006CB2 /* BotaoDaTableView.swift in Sources */,
 				CE48C706291EB4BE00D64E85 /* BordaDaCelula.swift in Sources */,

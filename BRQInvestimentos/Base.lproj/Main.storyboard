@@ -10,7 +10,7 @@
         <!--Moedas-->
         <scene sceneID="gpl-yv-7B3">
             <objects>
-                <tableViewController storyboardIdentifier="ViewController" id="DAN-c7-fKL" customClass="ViewController" customModule="BRQInvestimentos" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ViewController" id="DAN-c7-fKL" customClass="HomeViewController" customModule="BRQInvestimentos" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="63" sectionHeaderHeight="28" sectionFooterHeight="28" id="pXo-YD-RgL">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="749"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
